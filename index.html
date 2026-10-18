@@ -27,14 +27,14 @@ html{scroll-padding-top:104px}
 #wrench-cursor .wrench-tool{position:relative;width:100%;height:100%;transform-origin:8px 8px}
 #wrench-cursor img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain}
 #wrench-cursor .cursor-active{opacity:0}
-#wrench-cursor:is(.over-control,.is-turning) .cursor-idle{opacity:0}
-#wrench-cursor:is(.over-control,.is-turning) .cursor-active{opacity:1}
+#wrench-cursor.over-control .cursor-idle{opacity:0}
+#wrench-cursor.over-control .cursor-active{opacity:1}
 /* Keep the black idle artwork legible over dark project pages and images. */
 #wrench-cursor .cursor-idle{filter:drop-shadow(0 0 .6px #fff) drop-shadow(0 0 .6px #fff)}
 @media(any-hover:hover) and (any-pointer:fine){html.wrench-ready,html.wrench-ready body,html.wrench-ready body *{cursor:none!important}html.wrench-ready input,html.wrench-ready textarea,html.wrench-ready [contenteditable="true"]{cursor:text!important}}
-#wrench-cursor.is-turning .wrench-tool{animation:wrench-tighten .56s ease-in-out}
+#wrench-cursor.over-control .wrench-tool{animation:wrench-tighten .9s ease-in-out infinite}
 @keyframes wrench-tighten{0%,50%,100%{transform:rotate(0)}25%,75%{transform:rotate(-28deg)}}
-@media(prefers-reduced-motion:reduce){#wrench-cursor.is-turning .wrench-tool{animation:none}}
+@media(prefers-reduced-motion:reduce){#wrench-cursor.over-control .wrench-tool{animation:none}}
 
 .home-news{display:grid;grid-template-columns:180px 1fr;gap:30px;padding-top:48px}
 .home-news h2{font-size:28px;line-height:1.3;letter-spacing:-.035em;font-weight:400;text-transform:uppercase;margin:0}
@@ -410,13 +410,10 @@ html{scroll-padding-top:104px}
  const cursor=document.getElementById('wrench-cursor');
  const fine=matchMedia('(any-hover: hover) and (any-pointer: fine)');
  if(!cursor||!cursor.showPopover||!fine.matches)return;
- const root=document.documentElement;let hovered=null,turnTimer;
- const tool=cursor.querySelector('.wrench-tool');
- const stopTurn=()=>{clearTimeout(turnTimer);cursor.classList.remove('is-turning');};
- const turn=()=>{stopTurn();void tool.offsetWidth;cursor.classList.add('is-turning');turnTimer=setTimeout(stopTurn,560);};
+ const root=document.documentElement;let hovered=null;
  const images=[...cursor.querySelectorAll('img')];
- const clear=()=>{hovered=null;cursor.classList.remove('over-control','is-down');};
- const hide=()=>{stopTurn();clear();root.classList.remove('wrench-ready');if(cursor.matches(':popover-open'))cursor.hidePopover();};
+ const clear=()=>{hovered=null;cursor.classList.remove('over-control');};
+ const hide=()=>{clear();root.classList.remove('wrench-ready');if(cursor.matches(':popover-open'))cursor.hidePopover();};
  const position=event=>{
   if(event.pointerType!=='mouse'||!fine.matches||!images.every(image=>image.complete&&image.naturalWidth>0)){hide();return false;}
   if(event.target instanceof Element&&event.target.closest('input,textarea,[contenteditable="true"]')){hide();return false;}
@@ -427,8 +424,6 @@ html{scroll-padding-top:104px}
   return true;
  };
  document.addEventListener('pointermove',position,{passive:true});document.addEventListener('pointerover',position,{passive:true});
- document.addEventListener('pointerdown',event=>{if(event.button===0&&position(event))turn();},{passive:true});
- document.addEventListener('pointerup',()=>cursor.classList.remove('is-down'),{passive:true});
  root.addEventListener('pointerleave',hide);document.addEventListener('pointercancel',hide);window.addEventListener('blur',hide);
  document.addEventListener('visibilitychange',()=>{if(document.hidden)hide();});document.addEventListener('keydown',event=>{if(event.key==='Tab')hide();});fine.addEventListener('change',hide);
  new MutationObserver(()=>{if(root.classList.contains('wrench-ready')&&cursor.matches(':popover-open')){cursor.hidePopover();cursor.showPopover();}}).observe(document.body,{subtree:true,attributes:true,attributeFilter:['open']});
