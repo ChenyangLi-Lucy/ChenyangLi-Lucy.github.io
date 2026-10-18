@@ -21,15 +21,16 @@ html{scroll-padding-top:104px}
 @media(max-width:800px){.site-nav{gap:24px;min-height:64px}.site-nav-links{gap:22px}.site-nav-links a{font-size:14px}.site-name{font-size:20px}}
 @media(max-width:650px){html{scroll-padding-top:110px}.site-nav{display:block;min-height:0;padding-block:12px 9px}.site-name{display:inline-block;font-size:19px;margin-bottom:6px}.site-nav-links{width:100%;justify-content:space-between;gap:10px}.site-nav-links a{font-size:13px;padding:5px 0}.site-nav-links a::after{bottom:0}}
 
-#wrench-cursor{position:fixed;inset:auto;margin:0;padding:0;border:0;background:transparent;width:36px;height:42.75px;overflow:visible;pointer-events:none;z-index:2147483647;transform:translate(-24.75px,-10.125px)}
-#wrench-cursor::backdrop{display:none}#wrench-cursor svg{display:block;width:100%;height:100%;overflow:visible}
-.wrench-body{fill:#c5c7c4;transition:fill .16s}.wrench-tool{transform-origin:44px 18px}.wrench-bolt{opacity:0;transform-origin:44px 18px}
-#wrench-cursor.over-control .wrench-body{fill:#9bbb9b}#wrench-cursor.over-control .wrench-tool{animation:wrench-turn .9s ease-in-out infinite}#wrench-cursor.over-control .wrench-bolt{opacity:1;animation:wrench-tighten 1.8s linear infinite}
-#wrench-cursor.is-down .wrench-body{fill:#c1d9c2}
-@keyframes wrench-turn{0%,100%{transform:rotate(-24deg)}55%{transform:rotate(24deg)}}
-@keyframes wrench-tighten{0%{transform:rotate(0)}27.5%,50%{transform:rotate(48deg)}77.5%,100%{transform:rotate(96deg)}}
+/* The supplied PNGs share a canvas and hotspot, so state changes stay aligned. */
+#wrench-cursor{position:fixed;inset:auto;margin:0;padding:0;border:0;background:transparent;width:48px;height:37.44px;overflow:visible;pointer-events:none;z-index:2147483647;transform:translate(-8px,-8px)}
+#wrench-cursor::backdrop{display:none}
+#wrench-cursor img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain}
+#wrench-cursor .cursor-active{opacity:0}
+#wrench-cursor.over-control .cursor-idle{opacity:0}
+#wrench-cursor.over-control .cursor-active{opacity:1}
+/* Keep the black idle artwork legible over dark project pages and images. */
+#wrench-cursor .cursor-idle{filter:drop-shadow(0 0 .6px #fff) drop-shadow(0 0 .6px #fff)}
 @media(any-hover:hover) and (any-pointer:fine){html.wrench-ready,html.wrench-ready body,html.wrench-ready body *{cursor:none!important}html.wrench-ready input,html.wrench-ready textarea,html.wrench-ready [contenteditable="true"]{cursor:text!important}}
-@media(prefers-reduced-motion:reduce){#wrench-cursor .wrench-body{transition:none}#wrench-cursor.over-control .wrench-tool,#wrench-cursor.over-control .wrench-bolt{animation:none}}
 
 
 .research-intro .intro-row{align-items:center}.research-intro .intro-copy{max-width:350px;font-size:15px}.research-intro .project-meta{align-items:start}.research-intro .project-meta p{max-width:640px}.research-intro .collaboration{max-width:360px!important;text-align:right;text-transform:none}.research-intro .status{color:#666;white-space:nowrap}.research-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:8px}.research-page .image-trigger{background:#fff}.research-page .image-trigger img{height:auto;object-fit:contain}.research-cover{margin-top:12px}.ready-interaction-cover{max-width:1200px;margin-inline:auto}.research-cover img{width:100%;height:auto}.research-page .section{padding-top:56px}.research-pair{display:grid;grid-template-columns:1fr 1fr;align-items:start;gap:28px}.research-pair .image-trigger img{max-height:420px;object-fit:contain}.research-wide{width:min(1120px,100%);margin:auto}.research-note{font-size:13px;line-height:1.65;color:#666;max-width:810px;margin:21px 0 0}.research-note strong{font-weight:400;color:#111}.research-next{margin-top:48px;padding-top:21px;border-top:1px solid #ddd;display:flex;justify-content:space-between;font-size:14px}.research-next a{text-decoration:none}.research-page figcaption{color:#666}.research-page .study-stats{font-size:14px;text-transform:uppercase;letter-spacing:.025em;margin:18px 0 0}.research-page .pneu-making{grid-template-columns:1fr 1.1fr}.research-page .results-pair{grid-template-columns:1fr 1fr}
@@ -197,26 +198,19 @@ html{scroll-padding-top:104px}
  document.head.appendChild(script);
 })();
 </script></div><div id="wrench-cursor" popover="manual" aria-hidden="true">
- <svg viewBox="0 0 64 76" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <defs><path id="wrench-outline" d="M37 5 C27 7 22 18 26 29 L10 51 C1 54 1 66 8 71 C16 77 28 70 27 61 L44 37 C56 38 64 29 61 17 L58 10 Q57 8 55 11 L47 24 L36 18 L42 5 Q42 3 37 5Z"/></defs>
-  <g class="wrench-bolt"><path d="M44 12 L49.2 15 L49.2 21 L44 24 L38.8 21 L38.8 15Z" fill="#fff" stroke="#596252" stroke-width="1.5"/><path d="M41 18 H47" stroke="#596252" stroke-width="1.5" stroke-linecap="round"/></g>
-  <g class="wrench-tool">
-   <use href="#wrench-outline" fill="none" stroke="#fff" stroke-width="5.2" stroke-linejoin="round"/>
-   <use class="wrench-body" href="#wrench-outline" stroke="#50594e" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
-   <circle cx="14" cy="62" r="4.8" fill="#fff" stroke="#50594e" stroke-width="2.5"/>
-   <path d="M19 50 L32 31" fill="none" stroke="#50594e" stroke-width="2.1" stroke-linecap="round"/>
-  </g>
- </svg>
+ <img class="cursor-idle" src="assets/cursor-idle.png" width="1223" height="954" alt="" draggable="false">
+ <img class="cursor-active" src="assets/cursor-active.png" width="1223" height="954" alt="" draggable="false">
 </div>
 <script>(()=>{
  const cursor=document.getElementById('wrench-cursor');
  const fine=matchMedia('(any-hover: hover) and (any-pointer: fine)');
  if(!cursor||!cursor.showPopover||!fine.matches)return;
  const root=document.documentElement;let hovered=null;
+ const images=[...cursor.querySelectorAll('img')];
  const clear=()=>{hovered=null;cursor.classList.remove('over-control','is-down');};
  const hide=()=>{clear();root.classList.remove('wrench-ready');if(cursor.matches(':popover-open'))cursor.hidePopover();};
  const position=event=>{
-  if(event.pointerType!=='mouse'||!fine.matches){hide();return false;}
+  if(event.pointerType!=='mouse'||!fine.matches||!images.every(image=>image.complete&&image.naturalWidth>0)){hide();return false;}
   if(event.target instanceof Element&&event.target.closest('input,textarea,[contenteditable="true"]')){hide();return false;}
   cursor.style.left=event.clientX+'px';cursor.style.top=event.clientY+'px';
   if(!cursor.matches(':popover-open'))cursor.showPopover();root.classList.add('wrench-ready');
