@@ -73,11 +73,11 @@ html{scroll-padding-top:104px}
 @media(max-width:650px){.portrait-bio{font-size:16px;line-height:1.6;max-width:100%;margin-top:12px}.portrait-copy{bottom:32px}}
 
 /* Keep both portraits larger and align their lower edges with the About copy. */
-.about-section{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(36px,6vw,88px)}
+.about-section{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(36px,6vw,88px)}
 .about-photos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .about-photo{margin:0;min-width:0;position:relative}
 .home-page .about-section .about-image{width:100%;height:auto;aspect-ratio:auto;object-fit:cover;object-position:50% 50%}
-@media(min-width:951px){.home-page .about-section{align-items:stretch}.home-page .about-section>div:first-child{display:flex;flex-direction:column;min-height:0}.home-page .about-photos{flex:1;min-height:0}.home-page .about-photo>.about-image{position:absolute;inset:0;height:100%}.home-page .about-copy>p:last-child{margin-bottom:0}}
+@media(min-width:951px){.home-page .about-section{align-items:stretch}.home-page .about-section>div:first-child{display:flex;flex-direction:column;min-height:0}.home-page .about-photos{flex:1;min-height:0;margin-top:12px}.home-page .about-photo>.about-image{position:absolute;inset:0;height:100%}.home-page .about-copy>p:last-child{margin-bottom:0}}
 @media(max-width:950px){.home-page .about-section{grid-template-columns:1fr;gap:25px}.home-page .about-copy{padding-top:0}.home-page .about-photo{aspect-ratio:3/4}.home-page .about-photo>.about-image{position:absolute;inset:0;height:100%}}
 @media(max-width:650px){.portrait-links a[href="#about"]{display:inline}}
 
