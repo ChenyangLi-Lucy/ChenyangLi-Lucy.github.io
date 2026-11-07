@@ -72,13 +72,13 @@ html{scroll-padding-top:104px}
 .portrait-bio{font-size:18px;line-height:1.65;max-width:610px;margin:16px 0 0;color:#fff;text-wrap:pretty}.portrait-hero::after{background:linear-gradient(90deg,rgba(0,0,0,.37),transparent 67%),linear-gradient(0deg,rgba(0,0,0,.35),transparent 62%)}
 @media(max-width:650px){.portrait-bio{font-size:16px;line-height:1.6;max-width:100%;margin-top:12px}.portrait-copy{bottom:32px}}
 
-/* Keep both portraits larger and align their lower edges with the About copy. */
-.about-section{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(36px,6vw,88px)}
-.about-photos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.about-photo{margin:0;min-width:0;position:relative}
-.home-page .about-section .about-image{width:100%;height:auto;aspect-ratio:auto;object-fit:cover;object-position:50% 50%}
-@media(min-width:951px){.home-page .about-section{align-items:stretch}.home-page .about-section>div:first-child{display:flex;flex-direction:column;min-height:0}.home-page .about-photos{flex:1;min-height:0;margin-top:12px}.home-page .about-photo>.about-image{position:absolute;inset:0;height:100%}.home-page .about-copy>p:last-child{margin-bottom:0}}
-@media(max-width:950px){.home-page .about-section{grid-template-columns:1fr;gap:25px}.home-page .about-copy{padding-top:0}.home-page .about-photo{aspect-ratio:3/4}.home-page .about-photo>.about-image{position:absolute;inset:0;height:100%}}
+/* Keep the portrait pair compact, independent of the About copy height. */
+.home-page .about-section{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(28px,4vw,64px);align-items:start}
+.about-photos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:100%;max-width:440px}
+.about-photo{margin:0;min-width:0;position:relative;aspect-ratio:3/4}
+.home-page .about-section .about-image{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;object-fit:cover;object-position:50% 50%}
+@media(min-width:951px){.home-page .about-photos{margin-top:12px}.home-page .about-copy>p:last-child{margin-bottom:0}}
+@media(max-width:950px){.home-page .about-section{grid-template-columns:1fr;gap:25px}.home-page .about-copy{padding-top:0}}
 @media(max-width:650px){.portrait-links a[href="#about"]{display:inline}}
 
 .work-section{padding-top:66px}.work-section>.section-head{width:100%;max-width:none;margin:0 0 28px}.work-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px 30px;width:100%;margin:0;padding:0;align-items:start}.work-card{display:block;min-width:0;text-decoration:none}.work-art{display:block;width:100%;aspect-ratio:16/11;overflow:hidden;background:#fff}.work-art img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .35s ease}.work-art.research-art img{object-fit:cover}.work-card:first-child .work-art img{object-position:50% 65%}.work-card[href="echosense.html"] .work-art img{object-position:55% 50%}.work-card:is(:hover,:focus-visible) .work-art img{transform:scale(1.015)}.work-card-head{display:grid;grid-template-columns:20px minmax(0,1fr);align-items:baseline;gap:8px;margin-top:17px}.work-card .number{font-size:13px;color:#888}.work-card h3{font-size:24px;font-weight:400;line-height:1.3;letter-spacing:0;margin:0}.work-card .card-description{font-size:16px;line-height:1.65;color:#666;margin:12px 0 0 28px}.work-card .card-meta{margin:16px 0 0 28px;font-size:13px;line-height:1.7;text-transform:none;color:#777;letter-spacing:0}.work-card:focus-visible{outline-offset:8px}.work-card:hover h3{color:#666}
