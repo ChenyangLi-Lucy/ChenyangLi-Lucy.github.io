@@ -72,12 +72,12 @@ html{scroll-padding-top:104px}
 .portrait-bio{font-size:18px;line-height:1.65;max-width:610px;margin:16px 0 0;color:#fff;text-wrap:pretty}.portrait-hero::after{background:linear-gradient(90deg,rgba(0,0,0,.37),transparent 67%),linear-gradient(0deg,rgba(0,0,0,.35),transparent 62%)}
 @media(max-width:650px){.portrait-bio{font-size:16px;line-height:1.6;max-width:100%;margin-top:12px}.portrait-copy{bottom:32px}}
 
-/* Keep the portrait pair compact, independent of the About copy height. */
+/* Fill the desktop photo column while keeping the mobile portrait pair compact. */
 .home-page .about-section{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(28px,4vw,64px);align-items:start}
 .about-photos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:100%;max-width:440px}
 .about-photo{margin:0;min-width:0;position:relative;aspect-ratio:3/4}
 .home-page .about-section .about-image{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;object-fit:cover;object-position:50% 50%}
-@media(min-width:951px){.home-page .about-section>div:first-child{align-self:stretch;display:flex;flex-direction:column}.home-page .about-heading{margin-bottom:34px}.home-page .about-photos{margin-top:auto}.home-page .about-copy>p:last-child{margin-bottom:0}}
+@media(min-width:951px){.home-page .about-section>div:first-child{align-self:stretch;display:flex;flex-direction:column;min-height:0}.home-page .about-photos{flex:1;min-height:0;max-width:none}.home-page .about-photo{aspect-ratio:auto;min-height:0}.home-page .about-copy>p:last-child{margin-bottom:0}}
 @media(max-width:950px){.home-page .about-section{grid-template-columns:1fr;gap:25px}.home-page .about-copy{padding-top:0}}
 @media(max-width:650px){.portrait-links a[href="#about"]{display:inline}}
 
