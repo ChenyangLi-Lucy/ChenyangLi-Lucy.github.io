@@ -89,13 +89,21 @@ html{scroll-padding-top:104px}
 #figure-viewer .plain-view>img[src*="20261102"]{
  box-sizing:border-box;background:#fff;padding:24px 24px 36px;
 }
-#evaluation .pneu-story-media figure{max-width:600px}
-#evaluation .pneu-story-media:has(img[src*="imu-traces"]) figure{max-width:500px}
+/* Equal image areas keep captions and explanatory text on shared baselines. */
+#evaluation .pneu-story-media figure{max-width:none}
+#evaluation .pneu-story-media .image-trigger{aspect-ratio:1.12;display:flex;align-items:center;justify-content:center}
+#evaluation .pneu-story-media .image-trigger img{width:100%;height:100%;object-fit:contain}
+#evaluation .pneu-story-media figcaption{min-height:3.2em}
 #evaluation .pneu-analysis-stack{grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(28px,4vw,56px)}
 #evaluation .pneu-story{grid-template-columns:minmax(0,1fr);gap:24px;align-content:start}
 #evaluation .pneu-story-copy p{max-width:none}
 @media(max-width:800px){
  #evaluation .pneu-analysis-stack{grid-template-columns:minmax(0,1fr);gap:40px}
+ #evaluation .pneu-story-media figure{max-width:600px}
+ #evaluation .pneu-story-media:has(img[src*="imu-traces"]) figure{max-width:500px}
+ #evaluation .pneu-story-media .image-trigger{aspect-ratio:auto;display:block}
+ #evaluation .pneu-story-media .image-trigger img{height:auto}
+ #evaluation .pneu-story-media figcaption{min-height:0}
 }
 @media(max-width:650px){
  #figure-viewer .plain-view>img[src*="20261102"]{padding:12px 12px 22px}
