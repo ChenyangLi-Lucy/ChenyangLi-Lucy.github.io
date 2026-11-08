@@ -51,6 +51,10 @@ html{scroll-padding-top:104px}
 .ready-step-number{font:14px/1.65 "Courier New",monospace;color:#a8c3ab;padding-top:2px}
 .ready-steps h3{font-size:20px;margin:0 0 6px}.ready-steps p{margin:0}
 .ready-study-layout{display:grid;gap:48px}
+.ready-evidence .image-trigger{box-sizing:border-box;padding:clamp(12px,1.2vw,20px);padding-bottom:clamp(20px,2vw,30px);background:#fff}
+.ready-evidence figcaption{margin-top:12px}
+.ready-signal-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;min-width:0}
+@media(max-width:800px){.ready-signal-pair{grid-template-columns:1fr}}
 @media(max-width:1200px){.ready-explainer{grid-template-columns:1fr;gap:25px}.ready-steps{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}.ready-sidebar{max-width:760px}.ready-interaction-cover .ready-sidebar{max-width:none}}
 @media(max-width:650px){.ready-steps{grid-template-columns:1fr;gap:20px}.ready-sidebar h2,.ready-sidebar h3{font-size:20px}.ready-steps h3{font-size:19px}.ready-sidebar p{font-size:16px}.ready-study-layout{gap:35px}}
 .chamber-series{display:grid;gap:38px}.chamber-group{min-width:0}.chamber-label{display:flex;gap:18px;align-items:center;margin-bottom:18px}.chamber-label img{width:44px;height:auto;background:#000}.chamber-label h3{font-size:19px;font-weight:400;margin:0}.chamber-photos{display:grid;grid-template-columns:minmax(0,699fr) minmax(0,773fr) minmax(0,734fr);gap:22px}.research-page .chamber-photos .image-trigger{background:#080908}.chamber-photos figure{min-width:0}.chamber-textiles{margin-top:48px}
@@ -87,8 +91,11 @@ html{scroll-padding-top:104px}
 }
 #evaluation .pneu-story-media figure{max-width:600px}
 #evaluation .pneu-story-media:has(img[src*="imu-traces"]) figure{max-width:500px}
-@media(min-width:1051px){
- #evaluation .pneu-story{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)}
+#evaluation .pneu-analysis-stack{grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(28px,4vw,56px)}
+#evaluation .pneu-story{grid-template-columns:minmax(0,1fr);gap:24px;align-content:start}
+#evaluation .pneu-story-copy p{max-width:none}
+@media(max-width:800px){
+ #evaluation .pneu-analysis-stack{grid-template-columns:minmax(0,1fr);gap:40px}
 }
 @media(max-width:650px){
  #figure-viewer .plain-view>img[src*="20261102"]{padding:12px 12px 22px}
