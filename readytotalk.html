@@ -63,6 +63,7 @@ html{scroll-padding-top:104px}
 @media(max-width:650px){.research-intro .intro-row h1{font-size:clamp(38px,10.4vw,60px);letter-spacing:-.055em}.research-intro .intro-copy{font-size:13px;max-width:350px}.research-intro .collaboration{text-align:left;margin-top:10px}.research-intro .status{display:block;margin-top:9px}.research-hero-grid{grid-template-columns:1fr;gap:24px}.research-page .section{padding-top:38px}.research-pair,.research-page .pneu-making,.research-page .results-pair{grid-template-columns:1fr;gap:25px}.research-note{font-size:12px;margin-top:17px}.research-page .study-stats{font-size:13px;line-height:1.6}.research-next{font-size:13px;margin-top:35px}.research-pair .image-trigger img{max-height:none}}
 
 /* Compact views of the paper's nine original, already-masked camera frames. */
+.ready-explainer:has(> .ready-camera-figure){grid-template-columns:clamp(230px,18vw,280px) minmax(0,600px);justify-content:center}
 .ready-explainer .ready-camera-figure{max-width:600px;margin:0}
 .ready-camera-grid{display:grid;grid-template-columns:112px repeat(3,minmax(0,1fr));gap:12px;align-items:center}
 .ready-camera-column{text-align:center;color:#a9afa9;font-size:13px}
@@ -73,6 +74,9 @@ html{scroll-padding-top:104px}
 .ready-camera-figure figcaption{margin-top:16px}
 #figure-viewer .camera-frame-view{width:min(520px,100%);margin:0 auto}
 #figure-viewer .viewer-content.zoomed .camera-frame-view{width:900px;max-width:none}
+@media(max-width:900px){
+ .ready-explainer:has(> .ready-camera-figure){grid-template-columns:minmax(0,600px)}
+}
 @media(max-width:650px){
  .ready-camera-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
  .ready-camera-corner{display:none}
